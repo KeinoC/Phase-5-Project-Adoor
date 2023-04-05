@@ -1,3 +1,6 @@
+
+https://dbdiagram.io/d/642b27435758ac5f17266b07
+
 # Putting it All Together: IAM Lab
 
 ## Learning Goals
@@ -248,3 +251,4 @@ recipe with the recipe form, and viewing a list of recipes.
 - [Flask-Bcrypt][bcrypt]
 
 [bcrypt]: https://flask-bcrypt.readthedocs.io/en/1.0.1/
+
