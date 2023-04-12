@@ -1,0 +1,68 @@
+.scroll-div {
+    /* justify-content: center; */
+    /* align-items: center; */
+    margin: 0;
+    margin-top: 0vh;
+    padding: 0;
+    min-height: 85vh;
+    max-height: 85vh;
+    width: 35vw;
+    overflow: scroll;
+    overscroll-behavior: auto;
+    position:absolute;
+
+    right:1vw;
+    
+}
+
+.unit-card-div {
+    width: 30vw;
+    height: 25vh;
+    margin: 2%;
+    background-color: whitesmoke;
+    display: flex;
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+.unit-card-div:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.unit-card-image {
+    display: block;
+    object-fit: cover;
+    min-width: 15vw;
+    max-width: 15vw;
+    max-height: 25vh;
+    position: relative;
+}
+
+.unit-card-info {
+    font-size: .7rem;
+    padding: .5rem;
+
+    max-width: 15vw;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    object-fit: cover;
+}
+
+.b {
+    font-weight: bold;
+}
+
+.bed-bath-tag {
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style-type: none;
+}

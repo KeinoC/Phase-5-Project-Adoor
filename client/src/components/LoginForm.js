@@ -1,11 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Button, Error, Input, FormField, Label } from "../styles";
+import {useHistory} from "react-router-dom";
+import "./LoginForm.css"
 
-function LoginForm({ onLogin }) {
+import {UserContext} from "./context";
+
+function LoginForm() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const history = useHistory();
+
+  const {setUser} = useContext(UserContext);
+
+
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -19,7 +28,10 @@ function LoginForm({ onLogin }) {
     }).then((r) => {
       setIsLoading(false);
       if (r.ok) {
-        r.json().then((user) => onLogin(user));
+        r.json().then((user) => {
+          setUser(user);
+          history.push("/Home"); // navigate to dashboard component after successful login
+        });
       } else {
         r.json().then((err) => setErrors(err.errors));
       }
@@ -27,36 +39,36 @@ function LoginForm({ onLogin }) {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <FormField>
-        <Label htmlFor="username">Username</Label>
-        <Input
+    <form onSubmit={handleSubmit} className = "login-form login-container">
+      <div>
+        <label htmlFor="username">Username</label>
+        <input
           type="text"
           id="username"
           autoComplete="off"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
-      </FormField>
-      <FormField>
-        <Label htmlFor="password">Password</Label>
-        <Input
+      </div>
+      <div>
+        <label htmlFor="password">Password</label>
+        <input
           type="password"
           id="password"
           autoComplete="current-password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-      </FormField>
-      <FormField>
-        <Button variant="fill" color="primary" type="submit">
+      </div>
+      <div>
+        <button variant="fill" color="primary" type="submit">
           {isLoading ? "Loading..." : "Login"}
-        </Button>
-      </FormField>
+        </button>
+      </div>
       <FormField>
-        {errors.map((err) => (
+        {/* {errors.map((err) => (
           <Error key={err}>{err}</Error>
-        ))}
+        ))} */}
       </FormField>
     </form>
   );
